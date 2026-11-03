@@ -1,73 +1,50 @@
-<p align="center">
-  <img src="assets/img/logo.webp" width="220" alt="Super Dog CWB — logotipo" />
-</p><h1 align="center">SUPER DOG CWB 🌭</h1><p align="center">
-  <img src="https://img.shields.io/badge/HTML5-1C1717?style=for-the-badge&logo=html5&logoColor=FFC400" alt="HTML5" />
-  <img src="https://img.shields.io/badge/CSS3-1C1717?style=for-the-badge&logo=css&logoColor=FFC400" alt="CSS3" />
-  <img src="https://img.shields.io/badge/JavaScript-1C1717?style=for-the-badge&logo=javascript&logoColor=FFC400" alt="JavaScript" />
-  <img src="https://img.shields.io/badge/GitHub%20Pages-1C1717?style=for-the-badge&logo=githubpages&logoColor=FFC400" alt="GitHub Pages" />
-</p><p align="center">
-  Protótipo de website para o <b>Super Dog CWB</b>, lanchonete de Curitiba com três unidades. Cardápio interativo, comanda para WhatsApp, localização das unidades, avaliações, fidelidade e tema claro/escuro.
-</p><p align="center">
-  <a href="https://lorenzo-or7.github.io/super-dog-cwb/"><b>🔗 Acessar o site</b></a>
-  &nbsp;·&nbsp;
-  <a href="https://www.instagram.com/superdog_cwb/"><b>📸 Instagram</b></a>
-</p>🖥️ Preview
-<p align="center">
+<div align="center"><img src="assets/img/logo.webp" alt="Super Dog CWB" width="190">SUPER DOG CWB 🌭
+O dogão de Curitiba, agora na web.
+<img src="https://img.shields.io/badge/HTML5-171717?style=for-the-badge&logo=html5&logoColor=FFC400" alt="HTML5">
+<img src="https://img.shields.io/badge/CSS3-171717?style=for-the-badge&logo=css&logoColor=FFC400" alt="CSS3">
+<img src="https://img.shields.io/badge/JavaScript-171717?style=for-the-badge&logo=javascript&logoColor=FFC400" alt="JavaScript">
+<img src="https://img.shields.io/badge/GitHub_Pages-171717?style=for-the-badge&logo=githubpages&logoColor=FFC400" alt="GitHub Pages">
+Uma demo de website para o Super Dog, de Curitiba.
+Identidade de rua, cardápio digital e pedidos mais simples — em uma experiência responsiva.
+
+🌭 VISITAR O SITE · 📸 INSTAGRAM
+</div>🖥️ Preview
+<div align="center">
   <a href="https://lorenzo-or7.github.io/super-dog-cwb/">
-    <img src="assets/img/hero-doritos.webp" width="90%" alt="Fotografia de um cachorro-quente do Super Dog, utilizada no website" />
+    <img src="assets/img/hero-doritos.webp" width="46%" alt="Cachorro-quente com Doritos">
   </a>
-</p><p align="center"><sub>Imagem do acervo visual do projeto. Acesse o link para conferir a interface completa.</sub></p>📌 Sobre o projeto
-O Super Dog é uma marca de cachorro-quente e lanches em Curitiba, com unidades no Água Verde / Vila Izabel, Capão Raso e Novo Mundo. O projeto nasceu da proposta de traduzir a experiência do carrinho de rua para uma presença digital moderna, sem perder a identidade popular e acolhedora do negócio.
+  <a href="https://lorenzo-or7.github.io/super-dog-cwb/">
+    <img src="assets/img/queijo-puxando.webp" width="46%" alt="Cachorro-quente com queijo derretido">
+  </a>
+</div>📌 Sobre
+O Super Dog CWB é conhecido pelos cachorros-quentes caprichados e pelo atendimento próximo. Com três unidades em Curitiba, o negócio vem modernizando sua estrutura e sua presença digital.
 
-A direção criativa segue o conceito Street Food Editorial: amarelo e vermelho marcantes, fundos creme e carvão, fotografias reais dos lanches e uma combinação tipográfica de Clash Display com Satoshi.
+O desafio desta demo foi traduzir essa personalidade em uma interface Street Food Editorial: visual marcante, fotos reais dos lanches e navegação simples.
 
-O site prioriza o cardápio, a escolha da unidade e a conversão de pedidos via WhatsApp, além de valorizar a história, o atendimento e a experiência de quem frequenta o Super Dog.
+Identidade: amarelo, vermelho e tons quentes · Títulos: Clash Display · Textos: Satoshi.
 ✨ Funcionalidades
-- 🌭 Cardápio interativo com categorias de cachorros-quentes, artesanais, bebidas e adicionais
-- 🧾 Comanda digital para selecionar itens, calcular totais e preparar pedidos pelo WhatsApp
-- 📍 Três unidades com endereços, rotas, contatos e seleção da unidade desejada
-- 🗺️ Mapa integrado para localização
-- 🕒 Horários de funcionamento e indicador dinâmico de atendimento
-- ⭐ Prova social com avaliações de clientes
-- 🎟️ Cartão fidelidade apresentado em seção própria
-- 🖼️ Fotografias e vídeo reais dos produtos
-- 🌗 Tema claro e escuro, com seletor editorial e preferência persistente
-- 📱 Navegação responsiva, incluindo experiência adaptada para dispositivos móveis
-- ♿ Atenção à acessibilidade, semântica, teclado e preferência por movimento reduzido
+- 🌭 Cardápio digital com categorias e preços
+- 🧾 Comanda interativa com encaminhamento ao WhatsApp
+- 📍 Seleção entre três unidades de Curitiba, com rotas e contatos
+- ⭐ Avaliações e depoimentos de clientes
+- 🎟️ Apresentação do cartão fidelidade
+- 🌓 Tema claro/escuro com seletor editorial
+- 📱 Layout responsivo e interações acessíveis
+- 🎬 Fotografias e vídeo reais dos produtos
 🛠️ Tecnologias
-- HTML5 — estrutura semântica das páginas e componentes
-- CSS3 — layout, identidade visual, temas, responsividade e animações
-- JavaScript — navegação, seleção de unidades, comanda e interatividade
-- GitHub Pages — hospedagem estática, após ativação no repositório
-O projeto utiliza JavaScript puro, sem necessidade de framework ou etapa de build. Fontes locais em .woff2, imagens em .webp e vídeo em .mp4 estão organizados na pasta assets/.
-⚙️ Como executar
-Clone o repositório:
+HTML5 · CSS3 · JavaScript puro · GitHub Pages
+
+Projeto estático, sem framework ou processo de build. Imagens em WebP, fontes locais em WOFF2 e mídia organizada em assets/.
+⚙️ Executar localmente
 git clone https://github.com/lorenzo-or7/super-dog-cwb.git
 cd super-dog-cwb
-Abra index.html no navegador. Para testar em um servidor local, use, por exemplo:
 python -m http.server 8000
-Acesse http://localhost:8000.
-📂 Estrutura do projeto
-super-dog-cwb/
-├── index.html
-├── styles.css
-├── script.js
-└── assets/
-    ├── fonts/
-    ├── img/
-    └── video/
-Nota: este é um protótipo demonstrativo, criado para apresentação comercial. Preços, horários, benefícios, disponibilidade de serviços e informações das unidades devem ser confirmados com o estabelecimento antes de uma publicação oficial. A comanda prepara pedidos para envio via WhatsApp; não processa pagamentos diretamente no site.
+Abra http://localhost:8000 no navegador.
+Projeto demonstrativo, não oficial. Informações comerciais, horários, preços e serviços devem ser confirmados com o estabelecimento antes do lançamento. O site não processa pagamentos.
 
-👨‍💻 Autor
-<p>
-  Feito por <b>Lorenzo Orsetti</b> · <b>Or7.Dev</b><br/>
-  <a href="https://lorenzo-or7.github.io">
-    <img src="https://img.shields.io/badge/Portf%C3%B3lio-FFC400?style=for-the-badge&logo=googlechrome&logoColor=1C1717" alt="Portfólio" />
-  </a>
-  <a href="https://www.linkedin.com/in/lorenzo-orsetti-031906349/">
-    <img src="https://img.shields.io/badge/LinkedIn-1C1717?style=for-the-badge&logo=linkedin&logoColor=FFC400" alt="LinkedIn" />
-  </a>
-  <a href="https://github.com/lorenzo-or7">
-    <img src="https://img.shields.io/badge/GitHub-1C1717?style=for-the-badge&logo=github&logoColor=FFC400" alt="GitHub" />
-  </a>
-</p>
+👨‍💻 Desenvolvimento
+<div align="center">Lorenzo Orsetti — Or7.Dev
+
+
+
+</div>
