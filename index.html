@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Super Dog | Cachorro-quente e hambúrguer artesanal em Curitiba</title>
+<meta name="description" content="Cachorro-quente e hambúrguer artesanal em Curitiba, com recheio de sobra. Três unidades, de segunda a sábado, das 18:30 às 23:30. Nota 5,0 no Google.">
+<meta name="theme-color" content="#FFC400">
+<meta property="og:title" content="Super Dog">
+<meta property="og:description" content="Cachorro-quente e hambúrguer artesanal em Curitiba. Três unidades, de segunda a sábado, das 18:30 às 23:30.">
+<meta property="og:image" content="assets/img/doritos.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FFC400'/%3E%3Cpath d='M16 26 4 12l5-6h14l5 6z' fill='%23C91F26'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/clash-display-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/satoshi-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/img/hero-doritos.webp" as="image">
+<script>
+/* Aplica o tema antes da primeira pintura, para a página não piscar.
+   Para seguir a preferência do sistema na primeira visita, troque FOLLOW_SYSTEM para true. */
+(function(){
+  var root=document.documentElement,FOLLOW_SYSTEM=false,saved=null;
+  root.classList.add('js');
+  try{saved=localStorage.getItem('superdog-tema')}catch(e){}
+  if(saved!=='light'&&saved!=='dark'){
+    saved=FOLLOW_SYSTEM&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+  }
+  root.setAttribute('data-theme',saved);
+})();
+</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#cardapio">Pular para o cardápio</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2 3 6.6 7 .8-5.2 4.8 1.4 7.1-6.2-3.500-6.200 3.500 1.400-7.100L2 9.400l7-.8z"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <a class="nav-logo" href="#topo" aria-label="Super Dog, voltar ao início"><img src="assets/img/logo.webp" alt="" width="700" height="358"></a>
+  <nav class="nav-links" id="nav-links" aria-label="Principal">
+    <a href="#cardapio">Cardápio</a>
+    <a href="#unidades">Unidades</a>
+    <a href="#avaliacoes">Avaliações</a>
+    <a href="#fidelidade">Fidelidade</a>
+  </nav>
+  <p class="nav-status"><span class="dot" aria-hidden="true"></span><span data-status-text>18:30 às 23:30</span></p>
+  <div class="theme" role="group" aria-label="Tema da página">
+    <button type="button" data-theme-set="light" aria-pressed="true">Claro</button>
+    <button type="button" data-theme-set="dark" aria-pressed="false">Escuro</button>
+  </div>
+  <a class="btn btn-cta nav-cta" href="#unidades" data-order>Pedir</a>
+  <button class="nav-menu" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+</header>
+
+<main id="topo">
+
+<section class="hero" aria-labelledby="hero-title">
+  <h1 class="hero-title" id="hero-title"><span class="ln"><span>Super</span></span> <span class="ln"><span>Dog</span></span></h1>
+  <div class="hero-object">
+    <img src="assets/img/hero-doritos.webp" width="1421" height="736" alt="Cachorro-quente do Super Dog coberto de Doritos e maionese" fetchpriority="high" data-parallax>
+  </div>
+  <div class="hero-copy">
+    <p class="hero-lede">Cachorro-quente e hambúrguer artesanal em três unidades de Curitiba, com recheio de sobra. Tem gente que vem de outro bairro só pra comer aqui.</p>
+    <ul class="hero-facts">
+      <li class="hero-status"><span class="dot" aria-hidden="true"></span><span data-status-long>Segunda a sábado, das 18:30 às 23:30</span></li>
+      <li><a href="#avaliacoes"><span class="stars" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg></span> 5,0 em 412 avaliações no Google</a></li>
+    </ul>
+    <div class="hero-actions">
+      <a class="btn btn-cta" href="#unidades" data-order><svg aria-hidden="true"><use href="#i-wa"/></svg><span data-order-label>Pedir no WhatsApp</span></a>
+      <a class="btn btn-quiet" href="#cardapio">Ver cardápio</a>
+    </div>
+  </div>
+</section>
+
+<div class="band" role="group" aria-label="Alguns lanches do cardápio">
+  <div class="band-track">
+    <p>Doritos <i></i> Alcatra <i></i> Quatro Queijos <i></i> X-Tudo <i></i> Catupiry <i></i> X-FranBacon <i></i> Calabresa <i></i> Cheddar <i></i></p>
+    <p aria-hidden="true">Doritos <i></i> Alcatra <i></i> Quatro Queijos <i></i> X-Tudo <i></i> Catupiry <i></i> X-FranBacon <i></i> Calabresa <i></i> Cheddar <i></i></p>
+  </div>
+</div>
+
+<section class="menu" id="cardapio" aria-labelledby="menu-title">
+  <div class="menu-head">
+    <h2 class="h-xl r" id="menu-title">O cardápio inteiro</h2>
+    <p class="menu-intro r">Tudo sai da chapa de segunda a sábado, das 18:30 às 23:30. Toque nos lanches para montar sua comanda e mandar direto pro WhatsApp da unidade.</p>
+  </div>
+  <div class="menu-body">
+    <div class="menu-photo" aria-hidden="true">
+      <img class="on" data-photo="bandeja" src="assets/img/bandeja.webp" width="1200" height="1600" alt="" loading="lazy">
+      <img data-photo="doritos" src="assets/img/doritos.webp" width="1200" height="1600" alt="" loading="lazy">
+      <img data-photo="frango" src="assets/img/frango-queijo.webp" width="1200" height="1600" alt="" loading="lazy">
+      <img data-photo="queijo" src="assets/img/queijo-puxando.webp" width="1200" height="1600" alt="" loading="lazy">
+      <img data-photo="carrinho" src="assets/img/carrinho.webp" width="1440" height="900" alt="" loading="lazy">
+    </div>
+    <div class="menu-lists">
+      <nav class="menu-tabs" aria-label="Categorias do cardápio">
+        <a href="#cat-dogs" class="on"><span class="wide">Cachorro-quente</span><span class="narrow">Dogs</span></a>
+        <a href="#cat-burgers">Artesanais</a>
+        <a href="#cat-drinks">Bebidas</a>
+        <a href="#cat-extras">Adicionais</a>
+      </nav>
+
+      <div class="cat" id="cat-dogs" data-cat-photo="bandeja">
+        <h3 class="h-m">Cachorro-quente</h3>
+        <ul class="items">
+          <li><button class="item" type="button" data-item="Tradicional" data-price="15"><span class="item-name">Tradicional</span><span class="item-price">R$ 15,00</span></button></li>
+          <li><button class="item" type="button" data-item="Tradicional Duplo" data-price="18"><span class="item-name">Tradicional Duplo</span><span class="item-price">R$ 18,00</span></button></li>
+          <li><button class="item" type="button" data-item="Bacon" data-price="21"><span class="item-name">Bacon</span><span class="item-price">R$ 21,00</span></button></li>
+          <li><button class="item" type="button" data-item="Calabresa" data-price="21"><span class="item-name">Calabresa</span><span class="item-price">R$ 21,00</span></button></li>
+          <li><button class="item" type="button" data-item="Frango" data-price="21" data-photo="frango"><span class="item-name">Frango</span><span class="item-price">R$ 21,00</span></button></li>
+          <li><button class="item" type="button" data-item="Alcatra" data-price="32"><span class="item-name">Alcatra</span><span class="item-price">R$ 32,00</span></button></li>
+          <li><button class="item" type="button" data-item="Doritos" data-price="32" data-photo="doritos"><span class="item-name">Doritos</span><span class="item-price">R$ 32,00</span></button></li>
+          <li><button class="item" type="button" data-item="Catupiry" data-price="25" data-photo="queijo"><span class="item-name">Catupiry</span><span class="item-price">R$ 25,00</span></button></li>
+          <li><button class="item" type="button" data-item="Cheddar" data-price="25" data-photo="queijo"><span class="item-name">Cheddar</span><span class="item-price">R$ 25,00</span></button></li>
+          <li><button class="item" type="button" data-item="Quatro Queijos" data-price="25" data-photo="queijo"><span class="item-name">Quatro Queijos</span><span class="item-price">R$ 25,00</span></button></li>
+          <li><button class="item" type="button" data-item="Frabacon" data-price="32"><span class="item-name">Frabacon</span><span class="item-price">R$ 32,00</span></button></li>
+          <li><button class="item item-super" type="button" data-item="Super (serve 5 pessoas)" data-price="70"><span class="item-name">Super <small>serve 5 pessoas</small></span><span class="item-price">R$ 70,00</span></button></li>
+        </ul>
+      </div>
+
+      <div class="cat" id="cat-burgers" data-cat-photo="frango">
+        <h3 class="h-m">Artesanais</h3>
+        <ul class="items">
+          <li><button class="item" type="button" data-item="X-Burguer" data-price="18"><span class="item-name">X-Burguer</span><span class="item-price">R$ 18,00</span></button></li>
+          <li><button class="item" type="button" data-item="X-Salada" data-price="21"><span class="item-name">X-Salada</span><span class="item-price">R$ 21,00</span></button></li>
+          <li><button class="item" type="button" data-item="X-Alcatra" data-price="34"><span class="item-name">X-Alcatra</span><span class="item-price">R$ 34,00</span></button></li>
+          <li><button class="item" type="button" data-item="X-Bacon" data-price="29"><span class="item-name">X-Bacon</span><span class="item-price">R$ 29,00</span></button></li>
+          <li><button class="item" type="button" data-item="X-Calabresa" data-price="28"><span class="item-name">X-Calabresa</span><span class="item-price">R$ 28,00</span></button></li>
+          <li><button class="item" type="button" data-item="X-Frango" data-price="28"><span class="item-name">X-Frango</span><span class="item-price">R$ 28,00</span></button></li>
+          <li><button class="item" type="button" data-item="X-FranBacon" data-price="34"><span class="item-name">X-FranBacon</span><span class="item-price">R$ 34,00</span></button></li>
+          <li><button class="item" type="button" data-item="X-Alcatra com Bacon" data-price="39"><span class="item-name">X-Alcatra com Bacon</span><span class="item-price">R$ 39,00</span></button></li>
+          <li><button class="item" type="button" data-item="X-Tudo" data-price="45"><span class="item-name">X-Tudo</span><span class="item-price">R$ 45,00</span></button></li>
+        </ul>
+      </div>
+
+      <div class="cat" id="cat-drinks" data-cat-photo="carrinho">
+        <h3 class="h-m">Bebidas</h3>
+        <ul class="items">
+          <li><button class="item" type="button" data-item="Refrigerante lata" data-price="7"><span class="item-name">Refrigerante lata</span><span class="item-price">R$ 7,00</span></button></li>
+          <li><button class="item" type="button" data-item="Suco lata" data-price="7"><span class="item-name">Suco lata</span><span class="item-price">R$ 7,00</span></button></li>
+          <li><button class="item" type="button" data-item="Água" data-price="4"><span class="item-name">Água</span><span class="item-price">R$ 4,00</span></button></li>
+          <li><button class="item" type="button" data-item="Água com gás" data-price="4"><span class="item-name">Água com gás</span><span class="item-price">R$ 4,00</span></button></li>
+          <li><button class="item" type="button" data-item="Refrigerante 2L" data-price="15"><span class="item-name">Refrigerante 2L</span><span class="item-price">R$ 15,00</span></button></li>
+        </ul>
+      </div>
+
+      <div class="cat cat-extras" id="cat-extras" data-cat-photo="queijo">
+        <h3 class="h-m">Turbine seu lanche</h3>
+        <p>Tem adicional pra deixar o lanche do seu jeito. As opções e os valores você confirma com a unidade na hora de pedir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="night" id="carrinho" aria-labelledby="night-title">
+  <div class="night-video">
+    <video id="video" muted loop playsinline preload="metadata" poster="assets/img/video-poster.webp" width="720" height="1280" aria-label="Queijo derretido sendo puxado da chapa e caindo sobre um lanche no Super Dog">
+      <source src="assets/video/queijo.mp4" type="video/mp4">
+    </video>
+    <button class="video-toggle" type="button" id="video-toggle" aria-pressed="false">Pausar</button>
+  </div>
+  <div class="night-copy">
+    <h2 class="h-l r" id="night-title">Carrinho novo, mesmo capricho</h2>
+    <ul class="night-facts">
+      <li class="r">Estrutura mais forte, sem mudar o lanche que trouxe todo mundo até aqui.</li>
+      <li class="r">Mais chapeiros trabalhando, pra sua fome não ficar na fila.</li>
+      <li class="r">TVs pra você assistir enquanto come.</li>
+    </ul>
+    <img class="night-cart r" src="assets/img/carrinho.webp" width="1440" height="900" alt="Carrinho amarelo do Super Dog à noite, com o letreiro iluminado" loading="lazy">
+  </div>
+</section>
+
+<section class="proof" id="avaliacoes" aria-labelledby="proof-title">
+  <div class="proof-numbers">
+    <p class="proof-fig"><span class="proof-num" data-count="412" aria-hidden="true">412</span><span class="proof-cap">avaliações no Google</span></p>
+    <p class="proof-fig"><span class="proof-num" aria-hidden="true">5,0</span><span class="proof-cap"><span class="stars" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg></span> Nota 5,0</span></p>
+  </div>
+  <div class="proof-grid">
+    <div class="proof-left">
+      <h2 class="h-l r" id="proof-title">412 motivos para confiar. E contando.</h2>
+      <a class="btn btn-on-red r" href="https://www.google.com/maps/search/?api=1&amp;query=Super%20Dog%20R.%20Prof.%20Sebasti%C3%A3o%20Paran%C3%A1%206%20Curitiba" target="_blank" rel="noopener">Ver avaliações no Google</a>
+    </div>
+    <div class="proof-right">
+      <h3 class="h-s r">O que mais aparece nos comentários</h3>
+      <ul class="proof-list">
+        <li class="r">Cachorro-quente e hambúrguer deliciosos e bem-feitos</li>
+        <li class="r">Recheio generoso e ingrediente de qualidade</li>
+        <li class="r">Preço razoável e preparo rápido</li>
+        <li class="r">Equipe excelente e atenciosa</li>
+        <li class="r">Ambiente limpo e organizado</li>
+        <li class="r">Vontade de voltar, mesmo morando em outro bairro</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="units" id="unidades" aria-labelledby="units-title">
+  <h2 class="h-xl r" id="units-title">Onde bateu a fome?</h2>
+  <p class="units-intro r">Escolha a unidade mais perto. Os botões de pedido do site passam a falar direto com ela.</p>
+  <div class="units-grid">
+    <div class="unit-list">
+      <article class="unit r" data-unit="vila-izabel">
+        <button class="unit-pick" type="button" aria-pressed="false">
+          <span class="unit-name">Água Verde / Vila Izabel</span>
+          <span class="unit-address">R. Prof. Sebastião Paraná, 6 · Vila Izabel, Curitiba · 80320-070</span>
+        </button>
+        <div class="unit-actions">
+          <a class="btn btn-cta" href="https://wa.me/5541987926593" target="_blank" rel="noopener">WhatsApp (41) 98792-6593</a>
+          <a class="btn btn-quiet" href="https://www.google.com/maps/dir/?api=1&amp;destination=R.%20Prof.%20Sebasti%C3%A3o%20Paran%C3%A1%2C%206%20-%20Vila%20Izabel%2C%20Curitiba%20-%20PR%2C%2080320-070" target="_blank" rel="noopener">Traçar rota</a>
+          <a class="btn btn-quiet" href="https://www.ifood.com.br/busca?q=super%20dog" target="_blank" rel="noopener">iFood</a>
+        </div>
+      </article>
+      <article class="unit r" data-unit="capao-raso">
+        <button class="unit-pick" type="button" aria-pressed="false">
+          <span class="unit-name">Capão Raso</span>
+          <span class="unit-address">Av. Winston Churchill, 1988 · Curitiba</span>
+        </button>
+        <div class="unit-actions">
+          <a class="btn btn-cta" href="https://wa.me/5541998432534" target="_blank" rel="noopener">WhatsApp (41) 99843-2534</a>
+          <a class="btn btn-quiet" href="https://www.google.com/maps/dir/?api=1&amp;destination=Av.%20Winston%20Churchill%2C%201988%20-%20Curitiba%20-%20PR" target="_blank" rel="noopener">Traçar rota</a>
+        </div>
+      </article>
+      <article class="unit r" data-unit="novo-mundo">
+        <button class="unit-pick" type="button" aria-pressed="false">
+          <span class="unit-name">Novo Mundo</span>
+          <span class="unit-address">R. São Francisco Ader, 34 · Curitiba</span>
+        </button>
+        <div class="unit-actions">
+          <a class="btn btn-cta" href="https://wa.me/5541999970915" target="_blank" rel="noopener">WhatsApp (41) 99997-0915</a>
+          <a class="btn btn-quiet" href="https://www.google.com/maps/dir/?api=1&amp;destination=R.%20S%C3%A3o%20Francisco%20Ader%2C%2034%20-%20Curitiba%20-%20PR" target="_blank" rel="noopener">Traçar rota</a>
+        </div>
+      </article>
+    </div>
+    <aside class="visit r" aria-label="Mapa e horários">
+      <div class="visit-map"><iframe id="map" title="Mapa da unidade selecionada" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      <div class="visit-hours">
+        <h3 class="h-s">Horário das três unidades</h3>
+        <p class="visit-status"><span class="dot" aria-hidden="true"></span><span data-status-long>Segunda a sábado, das 18:30 às 23:30</span></p>
+        <table>
+          <caption class="sr">Horário de funcionamento, no horário de Curitiba</caption>
+          <tbody id="hours">
+            <tr data-day="1"><th scope="row">Segunda</th><td>18:30 às 23:30</td></tr>
+            <tr data-day="2"><th scope="row">Terça</th><td>18:30 às 23:30</td></tr>
+            <tr data-day="3"><th scope="row">Quarta</th><td>18:30 às 23:30</td></tr>
+            <tr data-day="4"><th scope="row">Quinta</th><td>18:30 às 23:30</td></tr>
+            <tr data-day="5"><th scope="row">Sexta</th><td>18:30 às 23:30</td></tr>
+            <tr data-day="6"><th scope="row">Sábado</th><td>18:30 às 23:30</td></tr>
+            <tr data-day="0"><th scope="row">Domingo</th><td>Fechado</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="welcome" id="experiencia" aria-labelledby="welcome-title">
+  <h2 class="h-xl r" id="welcome-title">Aqui todo mundo é bem-vindo</h2>
+  <div class="tiles">
+    <article class="tile tile-a r">
+      <h3 class="h-m tile-big">Vem com quem quiser, ou vem sozinho</h3>
+      <p>Ambiente familiar, bom pra levar as crianças, reunir a turma, encontrar o pessoal da faculdade ou jantar a sós. Acolhe a comunidade LGBTQ+ e é espaço seguro para pessoas transgênero.</p>
+    </article>
+    <article class="tile tile-b r">
+      <h3 class="h-m tile-big">Seu cachorro também</h3>
+      <p>Pet friendly. Os cães ficam com você na área externa.</p>
+    </article>
+    <article class="tile tile-c r">
+      <h3 class="h-s">Acessibilidade</h3>
+      <p>Entrada, banheiro e estacionamento acessíveis para cadeira de rodas, e aro de indução magnética.</p>
+    </article>
+    <article class="tile tile-d r">
+      <h3 class="h-s">Do jeito que você preferir</h3>
+      <p>Entrega, para viagem, refeição no local ou no balcão. Comida tarde da noite, refeição rápida, e aceita reservas.</p>
+    </article>
+    <article class="tile tile-e r">
+      <h3 class="h-s">Pagamento sem complicação</h3>
+      <p>Crédito, débito, pagamento por aproximação (NFC) e VR.</p>
+    </article>
+    <article class="tile tile-f r">
+      <h3 class="h-s">Vaga não falta</h3>
+      <p>Muitas vagas disponíveis e estacionamento gratuito na rua.</p>
+    </article>
+    <article class="tile tile-g r">
+      <h3 class="h-s">Empresa de empreendedoras</h3>
+      <p>Ambiente casual, tranquilo e na tendência, com banheiro à disposição.</p>
+    </article>
+    <article class="tile tile-h r">
+      <h3 class="h-m tile-big">R$ 20 a R$ 40 por pessoa</h3>
+      <p>Costuma ser o que se gasta aqui. Porção generosa, preço justo.</p>
+    </article>
+  </div>
+</section>
+
+<section class="loyal" id="fidelidade" aria-labelledby="loyal-title">
+  <div class="loyal-copy">
+    <h2 class="h-xl r" id="loyal-title">Preencheu, ganhou</h2>
+    <p class="loyal-lede r">Temos cartão fidelidade. A cada 15 lanches, você ganha 1 lanche especial do cardápio.</p>
+    <p class="loyal-note r"><strong>O Super Dog vale também</strong> (1 pão). Peça o seu cartão na próxima visita.</p>
+  </div>
+  <div class="loyal-stage">
+    <img class="loyal-hand" src="assets/img/mao-lanche.webp" width="511" height="745" alt="Lanche com queijo gratinado do Super Dog" loading="lazy">
+    <div class="card" id="card" role="img" aria-label="Cartão fidelidade do Super Dog com 15 espaços para carimbo">
+      <div class="card-grid" aria-hidden="true"></div>
+      <p class="card-foot">A cada 15 lanches, ganhe 1 lanche especial</p>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" aria-labelledby="gallery-title">
+  <div class="gallery-head">
+    <h2 class="h-l r" id="gallery-title">Direto da chapa</h2>
+    <a class="link r" href="https://www.instagram.com/superdog_cwb/" target="_blank" rel="noopener">Siga @superdog_cwb no Instagram</a>
+  </div>
+  <div class="strip" tabindex="0" role="region" aria-label="Fotos dos lanches, role para o lado">
+    <img src="assets/img/puxada-2.webp" width="720" height="1280" alt="Queijo derretido descendo em fio sobre o lanche" loading="lazy">
+    <img src="assets/img/queijo-puxando.webp" width="1200" height="1600" alt="Lanche de frango desfiado aberto ao meio, com o queijo esticando" loading="lazy">
+    <img src="assets/img/bandeja.webp" width="1200" height="1600" alt="Dois cachorros-quentes completos, cobertos de queijo gratinado" loading="lazy">
+    <img src="assets/img/puxada-4.webp" width="720" height="1280" alt="Queijo sendo despejado sobre o lanche, ainda na chapa" loading="lazy">
+    <img src="assets/img/frango-queijo.webp" width="1200" height="1600" alt="Lanche alto de frango desfiado e queijo, segurado com luvas pretas" loading="lazy">
+    <img src="assets/img/doritos.webp" width="1200" height="1600" alt="Cachorro-quente com Doritos em frente ao carrinho amarelo" loading="lazy">
+    <img src="assets/img/puxada-1.webp" width="720" height="1280" alt="Fio longo de queijo saindo da espátula até o lanche" loading="lazy">
+    <img src="assets/img/puxada-5.webp" width="720" height="1280" alt="Dois lanches ligados por um fio de queijo" loading="lazy">
+  </div>
+</section>
+
+<section class="closing" aria-labelledby="closing-title">
+  <div class="closing-object"><img src="assets/img/lanche-frango.webp" width="1235" height="1157" alt="Lanche de frango desfiado com muito queijo derretido" loading="lazy"></div>
+  <div class="closing-copy">
+    <h2 class="h-l r" id="closing-title" data-chapa>A chapa liga às 18:30</h2>
+    <p class="r">De segunda a sábado, nas três unidades. Peça pelo WhatsApp, retire no balcão ou venha comer aqui.</p>
+    <p class="closing-fact r" data-status-long>Segunda a sábado, das 18:30 às 23:30</p>
+    <a class="btn btn-on-red r" href="#unidades" data-order><svg aria-hidden="true"><use href="#i-wa"/></svg><span data-order-label>Pedir no WhatsApp</span></a>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <img class="foot-photo" src="assets/img/carrinho.webp" width="1440" height="900" alt="" loading="lazy">
+  <div class="foot-top">
+    <nav aria-label="Rodapé">
+      <a href="#cardapio">Cardápio</a>
+      <a href="#unidades">Unidades</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#fidelidade">Fidelidade</a>
+      <a href="https://www.instagram.com/superdog_cwb/" target="_blank" rel="noopener">@superdog_cwb</a>
+    </nav>
+    <address>
+      <a href="https://wa.me/5541987926593" target="_blank" rel="noopener">Vila Izabel (41) 98792-6593</a>
+      <a href="https://wa.me/5541998432534" target="_blank" rel="noopener">Capão Raso (41) 99843-2534</a>
+      <a href="https://wa.me/5541999970915" target="_blank" rel="noopener">Novo Mundo (41) 99997-0915</a>
+    </address>
+  </div>
+  <div class="foot-bottom">
+    <p class="foot-name" aria-hidden="true">Super Dog</p>
+    <p class="foot-legal">Super Dog, Curitiba. Segunda a sábado, das 18:30 às 23:30.</p>
+  </div>
+</footer>
+
+<a class="fab" href="#unidades" id="fab" data-order aria-label="Pedir pelo WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg><span>Pedir</span></a>
+<button class="dock" type="button" id="dock" hidden><span id="dock-count">1 item</span><span id="dock-total">R$ 0,00</span><span class="dock-go">Ver comanda</span></button>
+
+<dialog class="sheet" id="pick" aria-labelledby="pick-title">
+  <form method="dialog" class="sheet-close"><button>Fechar</button></form>
+  <h2 class="h-m" id="pick-title">Onde bateu a fome?</h2>
+  <p class="sheet-status"><span class="dot" aria-hidden="true"></span><span data-status-long>Segunda a sábado, das 18:30 às 23:30</span></p>
+  <div class="pick-list" id="pick-list"></div>
+</dialog>
+
+<dialog class="sheet" id="comanda" aria-labelledby="comanda-title">
+  <form method="dialog" class="sheet-close"><button>Fechar</button></form>
+  <h2 class="h-m" id="comanda-title">Sua comanda</h2>
+  <ul class="tab-lines" id="tab-lines"></ul>
+  <p class="tab-total"><span>Total dos lanches</span><strong id="tab-total">R$ 0,00</strong></p>
+  <fieldset class="seg-field">
+    <legend>Unidade</legend>
+    <div class="seg-options" id="tab-units"></div>
+  </fieldset>
+  <fieldset class="seg-field">
+    <legend>Como você quer receber?</legend>
+    <div class="seg-options">
+      <label><input type="radio" name="tab-mode" value="Entrega" checked><span>Entrega</span></label>
+      <label><input type="radio" name="tab-mode" value="Retirada"><span>Retirada</span></label>
+    </div>
+  </fieldset>
+  <a class="btn btn-cta btn-wide" id="tab-send" href="#unidades" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Enviar pelo WhatsApp</a>
+  <button class="link tab-clear" type="button" id="tab-clear">Limpar comanda</button>
+</dialog>
+
+<div class="sr" role="status" aria-live="polite" id="live"></div>
+<script src="script.js"></script>
+</body>
+</html>
