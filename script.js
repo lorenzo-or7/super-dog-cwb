@@ -94,6 +94,9 @@
       $('.unit-pick', el).setAttribute('aria-pressed', String(on));
       $('[data-unit-state]', el).textContent = on ? 'Unidade selecionada' : 'Selecionar unidade';
     });
+    $$('[data-chip]').forEach(function (c) {
+      c.classList.toggle('on', !!unit && c.dataset.chip === unit.id);
+    });
     $$('[data-order-label]').forEach(function (el) { el.textContent = unit ? 'Pedir em ' + unit.name : 'Pedir no WhatsApp'; });
     if (mapLive) mapEl.src = mapSrc(unit || UNITS[0]);
     paintTabUnits();
@@ -141,6 +144,11 @@
     d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
   });
 
+  /* Atalhos de unidade na seção final */
+  $$('[data-chip]').forEach(function (a) {
+    a.addEventListener('click', function () { chooseUnit(a.dataset.chip); });
+  });
+
   /* Comanda */
   var tab = {};
   try { tab = JSON.parse(sessionStorage.getItem('superdog-comanda')) || {}; } catch (e) { tab = {}; }
@@ -149,6 +157,7 @@
   var product = $('#product'), productItem = null;
   items.forEach(function (b) {
     prices[b.dataset.item] = +b.dataset.price;
+    b.parentElement.style.setProperty('--n', Array.prototype.indexOf.call(b.parentElement.parentElement.children, b.parentElement));
     var badge = document.createElement('span');
     badge.className = 'item-count';
     badge.setAttribute('aria-hidden', 'true');
@@ -157,8 +166,8 @@
       var panel = b.closest('.menu-panel');
       productItem = b;
       $('#product-name').textContent = b.dataset.item;
-      $('#product-cat').textContent = $('h3', panel).textContent;
-      $('#product-art').src = b.dataset.photo || $('.menu-art img', panel).getAttribute('src');
+      $('#product-cat').textContent = $('.menu-cat', panel).textContent;
+      $('#product-art').src = b.dataset.photo || $('.menu-deck img[data-tab="' + panel.getAttribute('aria-labelledby') + '"]').getAttribute('src');
       /* Ingredientes só entram quando confirmados: preencha data-desc no item. */
       var desc = $('#product-desc');
       desc.textContent = b.dataset.desc || '';
@@ -285,14 +294,24 @@
     indicator.style.height = on.offsetHeight + 'px';
     indicator.style.transform = 'translate(' + on.offsetLeft + 'px,' + on.offsetTop + 'px)';
   }
+  var deck = $$('.menu-deck img');
+  function paintDeck(id) {
+    var at = deck.map(function (d) { return d.dataset.tab; }).indexOf(id);
+    deck.forEach(function (d, i) { d.dataset.pos = (i - at + deck.length) % deck.length; });
+  }
+  /* As cartas de trás também trocam a categoria; as abas seguem como caminho acessível */
+  deck.forEach(function (d) {
+    d.addEventListener('click', function () { selectTab(document.getElementById(d.dataset.tab)); });
+  });
   function selectTab(t, focus) {
-    var stuck = moduleEl.getBoundingClientRect().top < tabList.getBoundingClientRect().top - 1;
+    var stuck = getComputedStyle(tabList).position === 'sticky' && moduleEl.getBoundingClientRect().top < tabList.getBoundingClientRect().top - 1;
     tabs.forEach(function (x) {
       var on = x === t;
       x.setAttribute('aria-selected', String(on));
       x.tabIndex = on ? 0 : -1;
       panelOf(x).hidden = !on;
     });
+    paintDeck(t.id);
     panelOf(t).classList.remove('enter');
     void panelOf(t).offsetWidth;
     panelOf(t).classList.add('enter');
@@ -314,20 +333,6 @@
   moveIndicator();
   window.addEventListener('resize', moveIndicator);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(moveIndicator);
-  /* Deixa as artes prontas para a troca não piscar */
-  var preloaded = false;
-  function preloadArts() {
-    if (preloaded) return;
-    preloaded = true;
-    $$('.menu-art img').forEach(function (img) { var i = new Image(); i.src = img.src; });
-  }
-  tabList.addEventListener('pointerenter', preloadArts);
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (en, ob) {
-      if (en[0].isIntersecting) { preloadArts(); ob.disconnect(); }
-    }, { rootMargin: '800px' }).observe(moduleEl);
-  }
-
   /* Split Text do hero: letra a letra, só na primeira apresentação da sessão */
   var splitSeen = false;
   try { splitSeen = sessionStorage.getItem('superdog-intro') === '1'; sessionStorage.setItem('superdog-intro', '1'); } catch (e) {}
@@ -413,6 +418,7 @@
       en.forEach(function (e) {
         if (!e.isIntersecting) return;
         e.target.classList.add('in');
+        if (e.target.classList.contains('ht')) setTimeout(function (el) { el.classList.add('ht-done'); }, 1300, e.target);
         ob.unobserve(e.target);
       });
     }, { rootMargin: '0px 0px -8% 0px' });
