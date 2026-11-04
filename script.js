@@ -80,6 +80,7 @@
   window.superDogStatus = statusAt;
 
   /* Comanda: estado declarado antes da unidade, que também pinta a comanda */
+  var nav = $('#nav');
   var dialog = $('#comanda'), dock = $('#dock'), fab = $('#fab'), lines = $('#tab-lines'), send = $('#tab-send');
 
   /* Unidade escolhida */
@@ -91,6 +92,7 @@
       var on = !!unit && el.dataset.unit === unit.id;
       el.classList.toggle('on', on);
       $('.unit-pick', el).setAttribute('aria-pressed', String(on));
+      $('[data-unit-state]', el).textContent = on ? 'Unidade selecionada' : 'Selecionar unidade';
     });
     $$('[data-order-label]').forEach(function (el) { el.textContent = unit ? 'Pedir em ' + unit.name : 'Pedir no WhatsApp'; });
     if (mapLive) mapEl.src = mapSrc(unit || UNITS[0]);
@@ -144,21 +146,36 @@
   try { tab = JSON.parse(sessionStorage.getItem('superdog-comanda')) || {}; } catch (e) { tab = {}; }
   var items = $$('.item');
   var prices = {};
+  var product = $('#product'), productItem = null;
   items.forEach(function (b) {
     prices[b.dataset.item] = +b.dataset.price;
-    var add = document.createElement('span');
-    add.className = 'item-add';
-    add.setAttribute('aria-hidden', 'true');
-    add.textContent = '+';
-    b.appendChild(add);
+    var badge = document.createElement('span');
+    badge.className = 'item-count';
+    badge.setAttribute('aria-hidden', 'true');
+    b.appendChild(badge);
     b.addEventListener('click', function () {
-      tab[b.dataset.item] = (tab[b.dataset.item] || 0) + 1;
-      b.classList.remove('bump');
-      void b.offsetWidth;
-      b.classList.add('bump');
-      paintTab();
-      $('#live').textContent = b.dataset.item + ' na comanda. Quantidade: ' + tab[b.dataset.item] + '.';
+      var panel = b.closest('.menu-panel');
+      productItem = b;
+      $('#product-name').textContent = b.dataset.item;
+      $('#product-cat').textContent = $('h3', panel).textContent;
+      $('#product-art').src = b.dataset.photo || $('.menu-art img', panel).getAttribute('src');
+      /* Ingredientes só entram quando confirmados: preencha data-desc no item. */
+      var desc = $('#product-desc');
+      desc.textContent = b.dataset.desc || '';
+      desc.hidden = !b.dataset.desc;
+      $('#product-price').textContent = money(prices[b.dataset.item]);
+      product.showModal();
     });
+  });
+  $('#product-add').addEventListener('click', function () {
+    var k = productItem.dataset.item;
+    tab[k] = (tab[k] || 0) + 1;
+    paintTab();
+    product.close();
+    productItem.classList.remove('bump');
+    void productItem.offsetWidth;
+    productItem.classList.add('bump');
+    $('#live').textContent = k + ' na comanda. Quantidade: ' + tab[k] + '.';
   });
   function totals() {
     var n = 0, sum = 0;
@@ -181,12 +198,13 @@
     var t = totals();
     try { sessionStorage.setItem('superdog-comanda', JSON.stringify(tab)); } catch (e) {}
     items.forEach(function (b) {
-      var q = tab[b.dataset.item] || 0, price = money(prices[b.dataset.item]);
+      var q = tab[b.dataset.item] || 0;
       b.classList.toggle('in-tab', q > 0);
-      $('.item-add', b).textContent = q > 0 ? q + 'x' : '+';
-      b.setAttribute('aria-label', 'Adicionar ' + b.dataset.item + ', ' + price + (q ? ', ' + q + ' na comanda' : ''));
+      $('.item-count', b).textContent = q > 0 ? q + 'x' : '';
+      b.setAttribute('aria-label', 'Ver detalhes de ' + b.dataset.item + (q ? ', ' + q + ' na comanda' : ''));
     });
     dock.hidden = t.n === 0;
+    document.body.classList.toggle('has-dock', t.n > 0);
     fab.classList.toggle('is-hidden', t.n > 0);
     $('#dock-count').textContent = t.n === 1 ? '1 item' : t.n + ' itens';
     $('#dock-total').textContent = money(t.sum);
@@ -258,31 +276,81 @@
   paintUnit();
   paintTab();
 
-  /* Foto do cardápio acompanha a linha ou a categoria */
-  var photos = $$('.menu-photo img');
-  var showPhoto = function (name) {
-    photos.forEach(function (p) { p.classList.toggle('on', p.dataset.photo === name); });
-  };
-  var tabs = $$('.menu-tabs a');
-  var cats = $$('.cat');
-  var currentCat = cats[0];
-  items.forEach(function (b) {
-    var cat = b.closest('.cat');
-    var over = function () { showPhoto(b.dataset.photo || cat.dataset.catPhoto); };
-    b.addEventListener('pointerenter', over);
-    b.addEventListener('focus', over);
-    b.addEventListener('pointerleave', function () { showPhoto(currentCat.dataset.catPhoto); });
+  /* Cardápio em abas: troca título, arte e lista sem mover a página */
+  var tabs = $$('[role="tab"]'), tabList = $('[role="tablist"]'), indicator = $('.menu-indicator'), moduleEl = $('.menu-module');
+  function panelOf(t) { return document.getElementById(t.getAttribute('aria-controls')); }
+  function moveIndicator() {
+    var on = tabs.filter(function (t) { return t.getAttribute('aria-selected') === 'true'; })[0];
+    indicator.style.width = on.offsetWidth + 'px';
+    indicator.style.height = on.offsetHeight + 'px';
+    indicator.style.transform = 'translate(' + on.offsetLeft + 'px,' + on.offsetTop + 'px)';
+  }
+  function selectTab(t, focus) {
+    var stuck = moduleEl.getBoundingClientRect().top < tabList.getBoundingClientRect().top - 1;
+    tabs.forEach(function (x) {
+      var on = x === t;
+      x.setAttribute('aria-selected', String(on));
+      x.tabIndex = on ? 0 : -1;
+      panelOf(x).hidden = !on;
+    });
+    panelOf(t).classList.remove('enter');
+    void panelOf(t).offsetWidth;
+    panelOf(t).classList.add('enter');
+    moveIndicator();
+    if (focus) t.focus({ preventScroll: true });
+    /* Com a barra de abas grudada no celular, a nova categoria começa do topo do módulo */
+    if (stuck) window.scrollTo({ top: moduleEl.getBoundingClientRect().top + window.scrollY - nav.offsetHeight, behavior: 'auto' });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { selectTab(t); });
+    t.addEventListener('keydown', function (e) {
+      var n = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+      if (n === undefined) return;
+      e.preventDefault();
+      selectTab(tabs[(n + tabs.length) % tabs.length], true);
+    });
+    if (i) panelOf(t).hidden = true;
   });
+  moveIndicator();
+  window.addEventListener('resize', moveIndicator);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(moveIndicator);
+  /* Deixa as artes prontas para a troca não piscar */
+  var preloaded = false;
+  function preloadArts() {
+    if (preloaded) return;
+    preloaded = true;
+    $$('.menu-art img').forEach(function (img) { var i = new Image(); i.src = img.src; });
+  }
+  tabList.addEventListener('pointerenter', preloadArts);
   if ('IntersectionObserver' in window) {
-    var catIO = new IntersectionObserver(function (en) {
-      en.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        currentCat = e.target;
-        showPhoto(currentCat.dataset.catPhoto);
-        tabs.forEach(function (t) { t.classList.toggle('on', t.getAttribute('href') === '#' + currentCat.id); });
+    new IntersectionObserver(function (en, ob) {
+      if (en[0].isIntersecting) { preloadArts(); ob.disconnect(); }
+    }, { rootMargin: '800px' }).observe(moduleEl);
+  }
+
+  /* Split Text do hero: letra a letra, só na primeira apresentação da sessão */
+  var splitSeen = false;
+  try { splitSeen = sessionStorage.getItem('superdog-intro') === '1'; sessionStorage.setItem('superdog-intro', '1'); } catch (e) {}
+  if (!reduce.matches && !splitSeen) {
+    var heroTitle = $('.hero-title'), letter = 0, originals = [];
+    $$('[data-split]', heroTitle).forEach(function (ln) {
+      originals.push([ln, ln.textContent]);
+      var text = ln.textContent;
+      ln.textContent = '';
+      text.split('').forEach(function (c) {
+        var s = document.createElement('span');
+        s.className = 'ch';
+        s.setAttribute('aria-hidden', 'true');
+        s.style.setProperty('--i', letter++);
+        s.textContent = c;
+        ln.appendChild(s);
       });
-    }, { rootMargin: '-35% 0px -60% 0px' });
-    cats.forEach(function (c) { catIO.observe(c); });
+    });
+    heroTitle.classList.add('split');
+    setTimeout(function () {
+      heroTitle.classList.remove('split');
+      originals.forEach(function (o) { o[0].textContent = o[1]; });
+    }, 1300);
   }
 
   /* Menu no celular */
@@ -368,21 +436,20 @@
   }
 
   /* Movimento ligado à rolagem: só transform */
-  var bandEl = $('.band'), bandTrack = $('.band-track'), menuLists = $('.menu-lists'), nav = $('#nav'), heroImg = $('[data-parallax]'), closingImg = $('.closing-object img');
+  var bandEl = $('.band'), bandTrack = $('.band-track'), footEl = $('.foot'), unitsEl = $('#unidades'), closingEl = $('.closing');
   var ticking = false;
   function onScroll() {
     ticking = false;
     var y = window.scrollY, vh = window.innerHeight;
     nav.classList.toggle('scrolled', y > 8);
     fab.classList.toggle('show', y > vh * 0.6);
-    var ml = menuLists.getBoundingClientRect();
-    fab.classList.toggle('in-menu', ml.top < vh && ml.bottom > vh * 0.35);
+    var ml = moduleEl.getBoundingClientRect(), fr = footEl.getBoundingClientRect();
+    var ur = unitsEl.getBoundingClientRect();
+    var cr = closingEl.getBoundingClientRect();
+    fab.classList.toggle('in-menu', (ml.top < vh && ml.bottom > vh * 0.35) || (ur.top < vh * 0.7 && ur.bottom > vh * 0.3) || cr.top < vh * 0.9 || fr.top < vh);
     if (reduce.matches) return;
-    if (y < vh * 1.2) heroImg.style.transform = 'translate3d(0,' + (y * -0.07).toFixed(1) + 'px,0) rotate(' + (y * 0.006).toFixed(2) + 'deg)';
     var b = bandEl.getBoundingClientRect();
     if (b.top < vh && b.bottom > 0) bandTrack.style.transform = 'translate3d(' + (-(y * 0.6) % (bandTrack.scrollWidth / 2)).toFixed(1) + 'px,0,0)';
-    var r = closingImg.getBoundingClientRect();
-    if (r.top < vh && r.bottom > 0) closingImg.style.transform = 'translate3d(0,' + (((r.top + r.height / 2) - vh / 2) * 0.05).toFixed(1) + 'px,0)';
   }
   window.addEventListener('scroll', function () {
     if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
