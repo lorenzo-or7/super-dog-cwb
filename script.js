@@ -312,6 +312,10 @@
       panelOf(x).hidden = !on;
     });
     paintDeck(t.id);
+    $$('[data-cat-tab]').forEach(function (c) {
+      if (c.dataset.catTab === t.id) c.setAttribute('aria-current', 'true');
+      else c.removeAttribute('aria-current');
+    });
     panelOf(t).classList.remove('enter');
     void panelOf(t).offsetWidth;
     panelOf(t).classList.add('enter');
@@ -333,6 +337,25 @@
   moveIndicator();
   window.addEventListener('resize', moveIndicator);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(moveIndicator);
+  /* Miniaturas do hero abrem a categoria no cardápio existente */
+  $$('[data-cat-tab]').forEach(function (c) {
+    c.addEventListener('click', function () { selectTab(document.getElementById(c.dataset.catTab)); });
+  });
+  /* Profundidade: os ingredientes respondem de leve ao ponteiro */
+  var heroEl = $('.hero');
+  if (!reduce.matches && window.matchMedia('(pointer: fine)').matches) {
+    var pxFrame = 0;
+    heroEl.addEventListener('pointermove', function (e) {
+      if (pxFrame) return;
+      pxFrame = requestAnimationFrame(function () {
+        pxFrame = 0;
+        var r = heroEl.getBoundingClientRect();
+        heroEl.style.setProperty('--px', ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
+        heroEl.style.setProperty('--py', ((e.clientY - r.top) / r.height - 0.5).toFixed(3));
+      });
+    });
+  }
+
   /* Split Text do hero: letra a letra, só na primeira apresentação da sessão */
   var splitSeen = false;
   try { splitSeen = sessionStorage.getItem('superdog-intro') === '1'; sessionStorage.setItem('superdog-intro', '1'); } catch (e) {}

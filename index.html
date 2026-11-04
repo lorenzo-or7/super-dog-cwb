@@ -12,7 +12,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FFC400'/%3E%3Cpath d='M16 26 4 12l5-6h14l5 6z' fill='%23C91F26'/%3E%3C/svg%3E">
 <link rel="preload" href="assets/fonts/clash-display-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/satoshi-500.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/img/hero-doritos.webp" as="image">
+<link rel="preload" href="assets/img/hero-dog.webp" as="image">
 <script>
 /* Aplica o tema antes da primeira pintura, para a página não piscar.
    Para seguir a preferência do sistema na primeira visita, troque FOLLOW_SYSTEM para true. */
@@ -58,20 +58,35 @@
 <main id="topo">
 
 <section class="hero" aria-labelledby="hero-title">
-  <div class="hero-bg" aria-hidden="true"><span class="hero-ribbon"></span><span class="hero-field"></span></div>
-  <div class="hero-copy">
-    <h1 class="hero-title" id="hero-title" aria-label="Super Dog" translate="no"><span class="ln" data-split>Super</span> <span class="ln ln-dog"><span data-split>Dog</span><svg class="ticks" aria-hidden="true"><use href="#i-ticks"/></svg></span></h1>
-    <p class="hero-lede">Cachorro-quente e hambúrguer artesanal em três unidades de Curitiba, com recheio de sobra. Tem gente que vem de outro bairro só pra comer aqui.</p>
-    <div class="hero-actions">
-      <a class="btn btn-xl btn-cta" href="#unidades" data-order><svg aria-hidden="true"><use href="#i-wa"/></svg><span data-order-label>Pedir no WhatsApp</span></a>
-      <a class="hero-link" href="#cardapio">Ver cardápio</a>
-    </div>
-    <p class="hero-status"><span class="dot" aria-hidden="true"></span><span data-status-long>Segunda a sábado, das 18:30 às 23:30</span></p>
-  </div>
   <div class="hero-stage">
-    <img class="hero-print" src="assets/img/carrinho.webp" width="1440" height="938" alt="Carrinho amarelo do Super Dog à noite, com o letreiro aceso">
-    <img class="hero-food" src="assets/img/hero-doritos.webp" width="1421" height="736" alt="Cachorro-quente do Super Dog coberto de Doritos e maionese" fetchpriority="high">
-    <a class="burst" href="#avaliacoes" aria-label="Nota 5,0 em 412 avaliações no Google. Ver avaliações"><strong>5,0</strong><span class="stars" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg></span><span>412 avaliações</span></a>
+    <svg class="hero-swoosh" viewBox="0 0 600 300" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M600 70C470 180 300 260 40 300 300 292 490 240 600 150z"/></svg>
+    <div class="hero-dog">
+      <img class="bit b1" src="assets/img/hero-bit-bacon.webp" alt="" width="124" height="95">
+      <img class="bit b2" src="assets/img/hero-bit-calabresa.webp" alt="" width="124" height="95">
+      <img class="bit b3" src="assets/img/hero-bit-pimentao-vermelho.webp" alt="" width="124" height="95">
+      <img class="bit b4" src="assets/img/hero-bit-batata.webp" alt="" width="124" height="95">
+      <img class="bit b5" src="assets/img/hero-bit-pimentao-amarelo.webp" alt="" width="124" height="95">
+      <img class="bit b6" src="assets/img/hero-bit-rodela.webp" alt="" width="124" height="95">
+      <img class="bit b7" src="assets/img/hero-bit-calabresa.webp" alt="" width="124" height="95">
+      <img class="bit b8" src="assets/img/hero-bit-bacon.webp" alt="" width="124" height="95">
+      <img class="bit b9" src="assets/img/hero-bit-pimentao-amarelo.webp" alt="" width="124" height="95">
+      <img class="hero-food" src="assets/img/hero-dog.webp" width="1672" height="941" alt="Cachorro-quente recheado do Super Dog, com queijo derretido caindo sobre calabresa, pimentão e bacon, segurado com luva preta" fetchpriority="high">
+    </div>
+  </div>
+  <div class="hero-copy">
+    <h1 class="hero-title" id="hero-title" aria-label="Bateu a fome? Vai de Super Dog." translate="no"><span class="ln ln-a" data-split>Bateu</span> <span class="ln ln-b" data-split>a fome?</span> <span class="ln ln-c" data-split>Vai de</span> <span class="ln ln-d"><span data-split>Super Dog.</span><svg class="ticks" aria-hidden="true"><use href="#i-ticks"/></svg></span></h1>
+    <p class="hero-lede">Cachorro-quente caprichado, recheio de sobra e aquele sabor que faz Curitiba voltar.</p>
+    <div class="hero-actions">
+      <a class="btn btn-cta hero-cta" href="#unidades" data-order><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir agora</a>
+      <a class="btn hero-ghost" href="#cardapio">Explorar cardápio</a>
+    </div>
+    <p class="hero-meta"><a href="#avaliacoes"><span class="stars" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg></span> 5,0 em 412 avaliações</a><a href="#unidades">3 unidades em Curitiba</a></p>
+    <p class="hero-status"><span class="dot" aria-hidden="true"></span><span data-status-long>Segunda a sábado, das 18:30 às 23:30</span></p>
+    <nav class="hero-cats" aria-label="Categorias do cardápio">
+      <a class="hero-cat" href="#cardapio" data-cat-tab="tab-dogs" aria-current="true"><img src="assets/img/hero-thumb-cachorro.webp" width="320" height="206" alt=""><span>Cachorro-quente</span></a>
+      <a class="hero-cat" href="#cardapio" data-cat-tab="tab-burgers"><img src="assets/img/hero-thumb-hamburguer.webp" width="320" height="248" alt=""><span>Hambúrgueres</span></a>
+      <a class="hero-cat" href="#cardapio" data-cat-tab="tab-drinks"><img src="assets/img/hero-thumb-bebidas.webp" width="320" height="248" alt=""><span>Bebidas</span></a>
+    </nav>
   </div>
 </section>
 
